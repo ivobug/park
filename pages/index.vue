@@ -2,7 +2,8 @@
     <section class="first">
         <input type="text" placeholder="Unesi ime" v-model="name"> <br>
         <input type="text" placeholder="Unesi Prezime" v-model="surname"> <br>
-        <button @click="generate" >Kreni</button>
+        <input type="number" placeholder="Unesi br.clnaske"  maxlength="6"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" v-model="clanska"> <br>
+        <button @click="generate">Kreni</button>
     </section>
 </template>
 
@@ -11,12 +12,13 @@ export default {
     data(){
         return{
             name:"",
-            surname:""
+            surname:"",
+            clanska:""
         }
     },
     methods:{
         generate(){
-            this.$router.push({ name: 'park', query: { name: this.name, surname:this.surname } })
+            this.$router.push({ name: 'park', query: { name: this.name, surname:this.surname, clanska:this.clanska } })
         }
     }
 }
