@@ -1,6 +1,6 @@
 <template>
-  <section>
-      <img src="../store/park.jpg" alt="">
+  <section id="park1">
+      <img src="../store/park.jpg" alt="" @contextmenu="handler($event)" id="park1__img">
       <div class="name"> <div class="left">{{name}} {{surname}} </div><div class="right">{{clanska}}</div></div>
       
   </section>
@@ -11,16 +11,21 @@ export default {
  data(){
    return{
      name:this.$route.query.name,
-     surname:this.$route.query.surname,
      clanska:this.$route.query.clanska
    }
  },
+ methods : {
+    handler: function(e) {
+        e.preventDefault();
+     }
+}
+
 
 }
 </script>
 
 <style scoped>
-section{
+#park1{
   -moz-user-select: none;
   -khtml-user-select: none;
   -webkit-user-select: none;
@@ -34,7 +39,7 @@ section{
   grid-template-rows:13rem 5.5rem 11.5rem;
   grid-template-columns:3.5rem 13.5rem 23rem;
 }
-  img{
+  #park1__img{
     height: 100%;
     grid-row: 1/-1;
     grid-column: 1/-1;
@@ -45,8 +50,9 @@ section{
     position: absolute;
     top: 35%;
     left: 1%;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.5rem;
+    font-family: 'Raleway', sans-serif;
+
+    font-size: 1.6rem;
     width: 100%;
     height: 2rem;
     transform: perspective(10rem) rotateY(20deg) rotate(-1deg);
@@ -55,7 +61,7 @@ section{
     
     grid-column: 2/3;
     grid-row: 2/3;
-    text-transform:uppercase;
+    text-transform:capitalize;
     z-index: 1;
     white-space: nowrap;
     color: white;
